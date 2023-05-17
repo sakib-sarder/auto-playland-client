@@ -7,7 +7,7 @@ import { useState } from "react";
 const NavBar = () => {
   const [openMenu, setOpenMenu] = useState(false);
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto relative">
       <div className="hidden py-2 lg:flex items-center justify-between">
         <div className="flex items-center gap-1">
           <img src={car} alt="logo" className="w-16" />{" "}
@@ -56,7 +56,7 @@ const NavBar = () => {
       </div>
       <div>
         {openMenu && (
-          <div className="px-2 pt-3 bg-gray-100 min-h-[calc(100vh-64px)]">
+          <div className="px-2 pt-3 bg-gray-100 absolute top-16 z-20 w-full lg:hidden">
             <div className="flex flex-row-reverse items-center gap-3 border-b-2 pb-2">
               <img
                 src={car}

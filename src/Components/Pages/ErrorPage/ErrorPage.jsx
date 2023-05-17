@@ -1,5 +1,5 @@
 
-const Login = () => {
+const ErrorPage = () => {
     return (
         <div>
             
@@ -7,4 +7,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default ErrorPage;
