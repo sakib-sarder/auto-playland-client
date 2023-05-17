@@ -7,11 +7,11 @@ import { useState } from "react";
 const NavBar = () => {
   const [openMenu, setOpenMenu] = useState(false);
   return (
-    <div className="container mx-auto relative">
+    <div className="container mx-auto relative border-b-2">
       <div className="hidden py-2 lg:flex items-center justify-between">
         <div className="flex items-center gap-1">
           <img src={car} alt="logo" className="w-16" />{" "}
-          <span className="text-3xl font-bold">AutoPlayLand</span>
+          <span className="text-3xl font-bold">AutoPlayland</span>
         </div>
         <div>
           <ul className="flex gap-4 font-semibold">
@@ -44,7 +44,7 @@ const NavBar = () => {
       <div className="flex items-center justify-between lg:hidden px-3">
         <div className="flex items-center gap-1">
           <img src={car} alt="logo" className="w-16" />{" "}
-          <span className="text-3xl font-bold">AutoPlayLand</span>
+          <span className="text-3xl font-bold">AutoPlayland</span>
         </div>
         <div onClick={() => setOpenMenu(!openMenu)}>
           {openMenu ? (
