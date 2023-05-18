@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserInfo } = useContext(AuthContext);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,10 +13,14 @@ const Register = () => {
 
   // Handle Register
   const handleRegister = (event) => {
+    const form = event.target;
     event.preventDefault();
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
+        updateUserInfo(name, photoURL).then(() => {
+          form.reset();
+        });
       })
       .catch((error) => console.log(error));
   };
@@ -57,7 +61,7 @@ const Register = () => {
               onChange={() => setPassword(event.target.value)}
               className="py-2 px-3 border-blue-300 border-2 rounded-md"
               id="password"
-              placeholder="Password"
+              type="password"
             />
           </div>
 

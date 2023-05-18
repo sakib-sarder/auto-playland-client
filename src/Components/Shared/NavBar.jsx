@@ -18,10 +18,12 @@ const NavBar = () => {
   return (
     <div className="container z-50 mx-auto relative border-b-2">
       <div className="hidden  py-2 lg:flex items-center justify-between">
-        <div className="flex items-center gap-1">
-          <img src={car} alt="logo" className="w-16" />{" "}
-          <span className="text-3xl font-bold">AutoPlayland</span>
-        </div>
+        <Link to="/">
+          <div className="flex items-center gap-1">
+            <img src={car} alt="logo" className="w-16" />{" "}
+            <span className="text-3xl font-bold">AutoPlayland</span>
+          </div>
+        </Link>
         <div>
           <ul className="flex gap-4 font-semibold">
             <li>
@@ -51,11 +53,16 @@ const NavBar = () => {
               <button onClick={hangleLogOut} className="btn btn-primary">
                 Logout
               </button>
-              <img
-                src={user?.photoURL}
-                alt="profile photo"
-                className="w-12 h-12 rounded-full border border-blue-600"
-              />
+              <div
+                className="tooltip tooltip-info tooltip-bottom"
+                data-tip={user.displayName}
+              >
+                <img
+                  src={user?.photoURL}
+                  alt="profile photo"
+                  className="w-12 h-12 rounded-full border border-blue-600"
+                />
+              </div>
             </div>
           ) : (
             <Link to="/login">
@@ -66,10 +73,12 @@ const NavBar = () => {
       </div>
       {/* Small Device  */}
       <div className="flex items-center justify-between lg:hidden px-3">
-        <div className="flex items-center gap-1">
-          <img src={car} alt="logo" className="w-16" />{" "}
-          <span className="text-3xl font-bold">AutoPlayland</span>
-        </div>
+        <Link to="/">
+          <div className="flex items-center gap-1">
+            <img src={car} alt="logo" className="w-16" />{" "}
+            <span className="text-3xl font-bold">AutoPlayland</span>
+          </div>
+        </Link>
         <div onClick={() => setOpenMenu(!openMenu)}>
           {openMenu ? (
             <RxCross1 className="text-4xl" />
@@ -83,12 +92,17 @@ const NavBar = () => {
           <div className="px-2 pt-3 bg-gray-100 absolute top-16 z-20 w-full lg:hidden">
             {user ? (
               <div className="flex flex-row-reverse items-center gap-3 border-b-2 pb-2">
-                <img
-                  src={user?.photoURL}
-                  alt="profile photo"
-                  className="w-12 h-12 rounded-full border border-blue-600"
-                />
-                <p className="text-2xl font-medium">Sakib Sarder</p>
+                <div
+                  className="tooltip tooltip-info tooltip-bottom"
+                  data-tip={user.displayName}
+                >
+                  <img
+                    src={user?.photoURL}
+                    alt="profile photo"
+                    className="w-12 h-12 rounded-full border border-blue-600"
+                  />
+                </div>
+                <p className="text-2xl font-medium">{user.displayName}</p>
               </div>
             ) : (
               <Link className="flex justify-end" to="/login">
