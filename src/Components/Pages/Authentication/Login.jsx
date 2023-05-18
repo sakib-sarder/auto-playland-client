@@ -59,7 +59,7 @@ const Login = () => {
           </div>
 
           <input
-            className="bg-[#2d0beef3] font-bold text-white py-2 rounded-lg"
+            className="bg-[#2d0beef3] font-bold text-white py-2 rounded-lg cursor-pointer"
             type="submit"
             value="Login"
           />

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 const Register = () => {
-  const { createUser, updateUserInfo } = useContext(AuthContext);
+  const { createUser, updateUserInfo, setReload } = useContext(AuthContext);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,6 +20,7 @@ const Register = () => {
         console.log(result.user);
         updateUserInfo(name, photoURL).then(() => {
           form.reset();
+          setReload(true);
         });
       })
       .catch((error) => console.log(error));
@@ -77,7 +78,7 @@ const Register = () => {
           </div>
 
           <input
-            className="bg-[#2d0beef3] font-bold text-white py-2 rounded-lg"
+            className="bg-[#2d0beef3] font-bold text-white py-2 rounded-lg cursor-pointer"
             type="submit"
             value="Register"
           />

@@ -27,19 +27,27 @@ const NavBar = () => {
         <div>
           <ul className="flex gap-4 font-semibold">
             <li>
-              <NavLink>Home</NavLink>
+              <NavLink to="/" className={({ isActive }) =>
+                    isActive ? "text-blue-600" : ""
+                  }>Home</NavLink>
             </li>
             <li>
-              <NavLink>All Toys</NavLink>
+              <NavLink to="/all-toys" className={({ isActive }) =>
+                    isActive ? "text-blue-600" : ""
+                  }>All Toys</NavLink>
             </li>
             {user && (
               <li>
-                <NavLink>My Toys</NavLink>
+                <NavLink to="my-toys" className={({ isActive }) =>
+                    isActive ? "text-blue-600" : ""
+                  }>My Toys</NavLink>
               </li>
             )}
             {user && (
               <li>
-                <NavLink>Add a Toy</NavLink>
+                <NavLink to="/add-toy" className={({ isActive }) =>
+                    isActive ? "text-blue-600" : ""
+                  }>Add a Toy</NavLink>
               </li>
             )}
             <li>
@@ -111,23 +119,58 @@ const NavBar = () => {
             )}
             <ul className="text-xl">
               <li className="py-3 border-b-2">
-                <NavLink>Home</NavLink>
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    isActive ? "text-blue-600" : ""
+                  }
+                >
+                  Home
+                </NavLink>
               </li>
               <li className="py-3 border-b-2">
-                <NavLink>All Toys</NavLink>
+                <NavLink
+                  to="/all-toys"
+                  className={({ isActive }) =>
+                    isActive ? "text-blue-600" : ""
+                  }
+                >
+                  All Toys
+                </NavLink>
               </li>
               {user && (
                 <li className="py-3 border-b-2">
-                  <NavLink>My Toys</NavLink>
+                  <NavLink
+                    to="/my-toys"
+                    className={({ isActive }) =>
+                      isActive ? "text-blue-600" : ""
+                    }
+                  >
+                    My Toys
+                  </NavLink>
                 </li>
               )}
               {user && (
                 <li className="py-3 border-b-2">
-                  <NavLink>Add a Toy</NavLink>
+                  <NavLink
+                    to="/add-toy"
+                    className={({ isActive }) =>
+                      isActive ? "text-blue-600" : ""
+                    }
+                  >
+                    Add a Toy
+                  </NavLink>
                 </li>
               )}
               <li className="py-3 border-b-2">
-                <NavLink>Blog</NavLink>
+                <NavLink
+                  to="/blog"
+                  className={({ isActive }) =>
+                    isActive ? "text-blue-600" : ""
+                  }
+                >
+                  Blog
+                </NavLink>
               </li>
               {user && (
                 <button onClick={hangleLogOut} className="btn btn-primary my-3">
