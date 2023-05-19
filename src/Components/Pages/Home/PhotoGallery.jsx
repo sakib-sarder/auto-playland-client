@@ -1,7 +1,7 @@
 import "./PhotoGallery.css";
 const PhotoGallery = () => {
   return (
-    <div className="rounded-lg my-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-3 bg-gradient p-4">
+    <div className="rounded-lg my-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-3 bg-gradient p-4">
       <div className=" opacity-90  shadow-xl image-full" data-aos="zoom-in">
         <img
           src="https://i.ibb.co/Hh4RNyf/pexels-nubia-navarro-nubikini-386000.jpg"
