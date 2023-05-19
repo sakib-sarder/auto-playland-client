@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 const Register = () => {
   const { createUser, updateUserInfo, setReload } = useContext(AuthContext);
+  const [error, setError] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,15 +14,25 @@ const Register = () => {
 
   // Handle Register
   const handleRegister = (event) => {
-    const form = event.target;
     event.preventDefault();
+    const form = event.target;
+    //  Validation
+    if (password.length < 6) {
+      setError("Password should be at least 6 chracter");
+      return;
+    }
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
-        updateUserInfo(name, photoURL).then(() => {
-          form.reset();
-          setReload(true);
-        });
+        //update user information
+        updateUserInfo(name, photoURL)
+          .then(() => {
+            form.reset();
+            setReload(true);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((error) => console.log(error));
   };
@@ -43,6 +54,7 @@ const Register = () => {
               placeholder="Your Name"
               className="py-2 px-3 border-blue-300 border-2 rounded-md block"
               id="name"
+              required
             />
           </div>
           <div className="form-control">
@@ -53,6 +65,7 @@ const Register = () => {
               placeholder="Your Email"
               className="py-2 px-3 border-blue-300 border-2 rounded-md block"
               id="email"
+              required
             />
           </div>
 
@@ -63,6 +76,7 @@ const Register = () => {
               className="py-2 px-3 border-blue-300 border-2 rounded-md"
               id="password"
               type="password"
+              required
             />
           </div>
 
@@ -74,9 +88,10 @@ const Register = () => {
               className="py-2 px-3 border-blue-300 border-2 rounded-md"
               id="photoURL"
               placeholder="photoURL"
+              required
             />
           </div>
-
+            <p className="text-error text-sm text-right pr-4">{error}</p>
           <input
             className="bg-[#2d0beef3] font-bold text-white py-2 rounded-lg cursor-pointer"
             type="submit"

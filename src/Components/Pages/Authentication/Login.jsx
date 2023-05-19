@@ -8,12 +8,14 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 const Login = () => {
   const { signInWithGoogle, LoginWithEmailPassword } = useContext(AuthContext);
   const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
   const [password, setPassword] = useState("");
   // Google Login
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
-        console.log(result.user);
+        const loggedUser = result.user;
+        console.log(loggedUser);
       })
       .catch((error) => {
         console.log(error);
@@ -24,7 +26,17 @@ const Login = () => {
     event.preventDefault();
     LoginWithEmailPassword(email, password)
       .then((result) => console.log(result.user))
-      .catch((error) => console.log(error.message));
+      .catch((error) => {
+        if (
+          error.code === "auth/wrong-password" ||
+          error.code === "auth/user-not-found"
+        ) {
+          setError("Invalid email or password");
+          return;
+        } else {
+          setError("");
+        }
+      });
   };
   return (
     <div className="flex flex-col md:flex-row container mx-auto md:h-[calc(100vh-64px)] items-center justify-center">
@@ -57,7 +69,9 @@ const Login = () => {
               placeholder="Password"
             />
           </div>
-
+          {error && (
+            <p className="text-right text-sm pr-4 text-error">{error}</p>
+          )}
           <input
             className="bg-[#2d0beef3] font-bold text-white py-2 rounded-lg cursor-pointer"
             type="submit"
