@@ -7,6 +7,9 @@ import Register from "../Components/Pages/Authentication/Register";
 import AddToy from "../Components/Pages/AddToy/AddToy";
 import AllToys from "../Components/Pages/AllToys/AllToys";
 import Blog from "../Components/Pages/Blog/Blog";
+import ToyDetails from "../Components/Pages/ToyDetails/ToyDetails";
+import MyToys from "../Components/Pages/MyToys/MyToys";
+import PrivateMyToys from "../Components/PrivateRoute/PrivateMyToys";
 
 const router = createBrowserRouter([
   {
@@ -32,12 +35,27 @@ const router = createBrowserRouter([
       },
       {
         path: "all-toys",
-        element: <AllToys></AllToys>,
-        loader: () => fetch("https://auto-playland-server.vercel.app/all-toys"),
+        element: <AllToys></AllToys>
       },
       {
         path: "blog",
         element: <Blog></Blog>,
+      },
+      {
+        path: "toy-details/:id",
+        element: <ToyDetails></ToyDetails>,
+        loader: ({ params }) =>
+          fetch(
+            `https://auto-playland-server.vercel.app/all-toys/${params.id}`
+          ),
+      },
+      {
+        path: "my-toys",
+        element: (
+          <PrivateMyToys>
+            <MyToys></MyToys>
+          </PrivateMyToys>
+        ),
       },
     ],
   },

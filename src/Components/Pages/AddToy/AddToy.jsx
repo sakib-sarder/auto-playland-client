@@ -47,6 +47,7 @@ const AddToy = () => {
           toast("successfully done");
         }
       });
+    form.reset();
   };
   return (
     <div className="mt-4 md:mt-12 px-3 md:px-0">
@@ -125,7 +126,7 @@ const AddToy = () => {
                 Price
               </label>
               <input
-                type="number"
+                type="text"
                 placeholder="Price"
                 id="price"
                 className="input input-bordered input-info w-full "

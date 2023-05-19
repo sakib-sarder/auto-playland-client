@@ -10,8 +10,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [photoURL, setPhotoURL] = useState("");
-  //   console.log({name, email, password, photoURL});
-
+  
   // Handle Register
   const handleRegister = (event) => {
     event.preventDefault();
@@ -22,19 +21,19 @@ const Register = () => {
       return;
     }
     createUser(email, password)
-      .then((result) => {
-        console.log(result.user);
-        //update user information
-        updateUserInfo(name, photoURL)
-          .then(() => {
-            form.reset();
-            setReload(true);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+    .then((result) => {
+      console.log(result.user);
+      //update user information
+      updateUserInfo(name, photoURL)
+      .then(() => {
+        form.reset();
+        setReload(true);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+      });
+    })
+    .catch((error) => console.log(error));
   };
   return (
     <div className="flex flex-col md:flex-row container mx-auto md:h-[calc(100vh-64px)] items-center justify-center">
@@ -49,7 +48,7 @@ const Register = () => {
           <div className="form-control">
             <label htmlFor="name">Name</label>
             <input
-              onChange={() => setName(event.target.value)}
+              onChange={(event) => setName(event.target.value)}
               type="text"
               placeholder="Your Name"
               className="py-2 px-3 border-blue-300 border-2 rounded-md block"
@@ -60,7 +59,7 @@ const Register = () => {
           <div className="form-control">
             <label htmlFor="email">Email</label>
             <input
-              onChange={() => setEmail(event.target.value)}
+              onChange={(event) => setEmail(event.target.value)}
               type="email"
               placeholder="Your Email"
               className="py-2 px-3 border-blue-300 border-2 rounded-md block"
@@ -72,7 +71,7 @@ const Register = () => {
           <div className="form-control">
             <label htmlFor="password">Password</label>
             <input
-              onChange={() => setPassword(event.target.value)}
+              onChange={(event) => setPassword(event.target.value)}
               className="py-2 px-3 border-blue-300 border-2 rounded-md"
               id="password"
               type="password"
@@ -83,7 +82,7 @@ const Register = () => {
           <div className="form-control">
             <label htmlFor="photoURL">PhotoURL</label>
             <input
-              onChange={() => setPhotoURL(event.target.value)}
+              onChange={(event) => setPhotoURL(event.target.value)}
               type="url"
               className="py-2 px-3 border-blue-300 border-2 rounded-md"
               id="photoURL"

@@ -8,7 +8,6 @@ import { AuthContext } from "../../Provider/AuthProvider";
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [openMenu, setOpenMenu] = useState(false);
-
   //Logout
   const hangleLogOut = () => {
     logOut()
@@ -38,7 +37,7 @@ const NavBar = () => {
             </li>
             {user && (
               <li>
-                <NavLink to="my-toys" className={({ isActive }) =>
+                <NavLink to="/my-toys" className={({ isActive }) =>
                     isActive ? "text-blue-600" : ""
                   }>My Toys</NavLink>
               </li>
