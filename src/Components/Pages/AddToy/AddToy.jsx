@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { toast } from "react-toastify";
+import "./AddToy.css";
 import "react-toastify/dist/ReactToastify.css";
 
 const AddToy = () => {
@@ -32,7 +33,7 @@ const AddToy = () => {
     console.log(newToy);
 
     //Mongodb Post
-    fetch("http://localhost:5000/toys", {
+    fetch("https://auto-playland-server.vercel.app/toys", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -48,8 +49,12 @@ const AddToy = () => {
       });
   };
   return (
-    <div className="md:mt-20">
-      <h1 className="text-center my-4 text-4xl font-semibold">Add A Toy</h1>
+    <div className="mt-4 md:mt-12 px-3 md:px-0">
+      <div className="add-toy rounded-lg h-[20vh]  bg-cover mx-auto container flex items-center justify-center">
+        <h1 className="text-center text-gradient text-6xl font-bold ">
+          Add A Toy
+        </h1>
+      </div>
       <form onSubmit={handleAddToy} className="container mx-auto">
         <div className=" flex justify-center items-center">
           <div className="md:grid grid-cols-2 w-full gap-2">
@@ -106,13 +111,14 @@ const AddToy = () => {
               <label htmlFor="category" className="label">
                 Sub Category
               </label>
-              <input
-                type="text"
-                placeholder="Sub Category"
-                id="category"
+              <select
                 name="subCategory"
-                className="input input-bordered input-info w-full "
-              />
+                className="input input-bordered input-info w-full"
+              >
+                <option value="Sports Car">Sports Car</option>
+                <option value="Truck">Truck</option>
+                <option value="Regular Car">Regular Car</option>
+              </select>
             </div>
             <div>
               <label htmlFor="price" className="label">
