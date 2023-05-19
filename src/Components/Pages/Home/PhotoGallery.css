@@ -1,11 +1,3 @@
 h1 {
   text-align: center;
 }
-
-.gallery-body {
-  background-image: url("./../../../assets/banner.jpg"), linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8));
-  height: 100vh;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-blend-mode: overlay;
-}

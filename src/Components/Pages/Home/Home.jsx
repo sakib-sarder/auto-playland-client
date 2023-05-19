@@ -6,11 +6,11 @@ const Home = () => {
   return (
     <div className="container mx-auto">
       <Banner />
-      <h1 className="text-orange-400 font-bold text-3xl uppercase tracking-widest">
+      <h1 className="font-bold text-3xl text-gradient tracking-widest">
         photo gallery
       </h1>
       <PhotoGallery />
-      <h1 className="text-orange-400 font-bold text-3xl uppercase tracking-widest mb-8">
+      <h1 className="font-bold text-3xl text-gradient tracking-widest">
       Shop by category
       </h1>
       <Category />

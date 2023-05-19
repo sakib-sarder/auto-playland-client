@@ -2,3 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.text-gradient {
+  @apply uppercase from-purple-600 via-pink-600 to-blue-600 bg-gradient-to-r bg-clip-text text-transparent;
+}
+
+.bg-gradient {
+  @apply bg-gradient-to-t from-gray-200 via-gray-400 to-gray-600;
+}
+
+.hover-zoom-in {
+  @apply hover:scale-105 transform transition-all duration-300 z-30;
+}
