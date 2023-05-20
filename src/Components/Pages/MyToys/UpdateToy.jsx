@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const UpdateToy = () => {
   const id = useParams().id;
@@ -10,14 +11,16 @@ const UpdateToy = () => {
       .then((res) => res.json())
       .then((data) => setToy(data));
   }, [id]);
+  console.log(toy);
 
   const handleUpdate = (event) => {
     event.preventDefault();
     const form = event.target;
     const price = form.price.value;
-    const quantity = form.availableQuantity.value;
+    const availableQuantity = form.availableQuantity.value;
     const details = form.details.value;
-    const updatedInfo = { price, quantity, details };
+
+    const updatedInfo = { price, availableQuantity, details };
     fetch(`https://auto-playland-server.vercel.app/my-toy/${id}`, {
       method: "PUT",
       headers: {
@@ -28,6 +31,9 @@ const UpdateToy = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        if (data.modifiedCount > 0) {
+          toast("Successfully Updated");
+        }
       });
   };
 
@@ -41,7 +47,7 @@ const UpdateToy = () => {
               Price
             </label>
             <input
-              defaultValue={toy.price}
+              defaultValue={toy?.price}
               type="text"
               placeholder="Price"
               id="price"
@@ -54,9 +60,9 @@ const UpdateToy = () => {
               Available Quantity
             </label>
             <input
-              defaultValue={toy.availableQuantity}
+              defaultValue={toy?.availableQuantity}
               name="availableQuantity"
-              type="number"
+              type="text"
               placeholder="Available Quantity"
               id="quantity"
               className="input input-bordered input-info w-full "

@@ -14,6 +14,7 @@ const MyToys = () => {
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, [user]);
+  console.log(toys);
 
   const handleDelete = (id) => {
     Swal.fire({
