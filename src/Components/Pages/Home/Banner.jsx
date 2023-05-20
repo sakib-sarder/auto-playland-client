@@ -15,7 +15,7 @@ const Banner = () => {
           Unleash the Power of Possibilities, Ignite Your Imagination, and Fuel
           the Fun with Exhilarating Car Toys from Auto Playland
         </p>
-        <button className="btn btn-primary">Buy Now</button>
+        <button className="primary-btn">Buy Now</button>
       </div>
       <div data-aos="fade-left">
         <Player autoplay loop src={animation}></Player>

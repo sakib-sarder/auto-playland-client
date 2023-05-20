@@ -60,7 +60,7 @@ const Category = () => {
               <img
                 src={sportsToy?.photoUrl}
                 alt={sportsToy?.name}
-                className="h-full"
+                className="h-72"
               />
               <div className="pt-2 ">
                 <h1 className="text-left text-lg tracking-wide font-bold">
@@ -78,7 +78,7 @@ const Category = () => {
                 <div className="text-end">
                   <button
                     onClick={() => handlePrivateRoute(sportsToy._id)}
-                    className="btn btn-primary"
+                    className="primary-btn"
                   >
                     View Details
                   </button>
@@ -96,9 +96,9 @@ const Category = () => {
               <img
                 src={truckToy?.photoUrl}
                 alt={truckToy?.name}
-                className="h-full"
+                className="h-72"
               />
-              <div className="pt-2 ">
+              <div className="pt-2">
                 <h1 className="text-left text-lg tracking-wide font-bold">
                   {truckToy?.name}
                 </h1>
@@ -111,10 +111,10 @@ const Category = () => {
                     readOnly
                   />
                 </div>
-                <div className="text-end">
+                <div className="flex my-auto justify-end">
                   <button
                     onClick={() => handlePrivateRoute(truckToy._id)}
-                    className="btn btn-primary"
+                    className="primary-btn"
                   >
                     View Details
                   </button>
@@ -132,7 +132,7 @@ const Category = () => {
               <img
                 src={regularCarToy?.photoUrl}
                 alt={regularCarToy?.name}
-                className="h-full"
+                className="h-72"
               />
               <div className="pt-2 ">
                 <h1 className="text-left text-lg tracking-wide font-bold">
@@ -147,10 +147,10 @@ const Category = () => {
                     readOnly
                   />
                 </div>
-                <div className="text-end">
+                <div className="text-end mt-4">
                   <button
                     onClick={() => handlePrivateRoute(regularCarToy._id)}
-                    className="btn btn-primary"
+                    className="primary-btn"
                   >
                     View Details
                   </button>

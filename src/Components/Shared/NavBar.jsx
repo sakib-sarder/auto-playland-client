@@ -75,8 +75,8 @@ const NavBar = () => {
         </div>
         <div>
           {user ? (
-            <div className="flex gap-1 items-start">
-              <button onClick={hangleLogOut} className="btn btn-primary">
+            <div className="flex gap-1 items-center">
+              <button onClick={hangleLogOut} className="primary-btn">
                 Logout
               </button>
               <div
@@ -86,13 +86,13 @@ const NavBar = () => {
                 <img
                   src={user?.photoURL}
                   alt="profile photo"
-                  className="w-12 h-12 rounded-full border border-blue-600"
+                  className="w-12 h-12 rounded-full"
                 />
               </div>
             </div>
           ) : (
             <Link to="/login">
-              <button className="btn btn-primary">Login</button>
+              <button className="primary-btn">Login</button>
             </Link>
           )}
         </div>
@@ -123,14 +123,14 @@ const NavBar = () => {
                   <img
                     src={user?.photoURL}
                     alt="profile photo"
-                    className="w-12 h-12 rounded-full border border-blue-600"
+                    className="w-12 h-12 rounded-full"
                   />
                 </div>
                 <p className="text-2xl font-medium">{user.displayName}</p>
               </div>
             ) : (
               <Link className="flex justify-end" to="/login">
-                <button className="btn btn-primary">Login</button>
+                <button className="primary-btn">Login</button>
               </Link>
             )}
             <ul className="text-xl">
@@ -189,7 +189,7 @@ const NavBar = () => {
                 </NavLink>
               </li>
               {user && (
-                <button onClick={hangleLogOut} className="btn btn-primary my-3">
+                <button onClick={hangleLogOut} className="primary-btn my-3">
                   Logout
                 </button>
               )}

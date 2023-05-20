@@ -6,7 +6,7 @@ import PhotoGallery from "./PhotoGallery";
 const Home = () => {
   useTitle("Home")
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto px-3 md:px-0">
       <Banner />
       <h1 className="font-bold text-3xl text-gradient tracking-widest">
         photo gallery

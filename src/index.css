@@ -13,3 +13,7 @@
 .hover-zoom-in {
   @apply hover:scale-105 transform transition-all duration-300 z-30;
 }
+
+.primary-btn {
+  @apply px-3 py-2 bg-[#3B82F6] rounded-md font-semibold hover:bg-[#1a6df3f8] text-gray-100;
+}

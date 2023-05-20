@@ -39,7 +39,7 @@ const Register = () => {
         console.log(error);
       });
     })
-    .catch((error) => console.log(error));
+      .catch((error) => console.log(error));
   };
   return (
     <div className="flex flex-col md:flex-row container mx-auto md:h-[calc(100vh-64px)] items-center justify-center">
