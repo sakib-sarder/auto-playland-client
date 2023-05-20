@@ -14,7 +14,6 @@ const MyToys = () => {
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, [user]);
-  console.log(toys);
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -32,10 +31,9 @@ const MyToys = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             if (data.deletedCount > 0) {
               Swal.fire("Deleted!", "Your file has been deleted.", "success");
-              const remaining = toys.filter((toy) => toy._id === id);
+              const remaining = toys.filter((toy) => toy._id !== id);
               setToys(remaining);
             }
           });
@@ -66,7 +64,7 @@ const MyToys = () => {
                 <td>
                   <img src={toy?.photoUrl} alt="Toy Photo" className="w-40" />
                 </td>
-                <td>{toy?.name.slice(0,15)}....</td>
+                <td>{toy?.name.slice(0, 15)}....</td>
                 <td>{toy?.subCategory}</td>
                 <td className="font-medium">${toy?.price}</td>
                 <td>{toy?.availableQuantity}</td>

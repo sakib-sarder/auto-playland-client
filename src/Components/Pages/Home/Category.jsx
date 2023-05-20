@@ -1,11 +1,15 @@
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "./Category.css";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
 import { Rating } from "@smastrom/react-rating";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import { toast } from "react-toastify";
 
 const Category = () => {
   const [toys, setToys] = useState([]);
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     fetch("https://auto-playland-server.vercel.app/all-toys")
@@ -14,13 +18,23 @@ const Category = () => {
   }, []);
 
   const sportsCategory = toys.filter((toy) => toy.subCategory === "Sports Car");
-  // console.log(sportsCategory);
+  
   const trucksCategory = toys.filter((toy) => toy.subCategory === "Truck");
-  // console.log(trucksCategory);
+  
   const regularCarCategory = toys.filter(
     (toy) => toy.subCategory === "Regular Car"
   );
-  console.log(regularCarCategory);
+
+  const handlePrivateRoute = (id) => {
+    if (user) {
+      navigate(`/toy/${id}`)
+      return;
+    } else {
+      toast("You have to log in first to view details")
+      navigate(`/toy/${id}`)
+    }
+
+  };
 
   return (
     <div className="my-4">
@@ -62,16 +76,19 @@ const Category = () => {
                   />
                 </div>
                 <div className="text-end">
-                  <Link>
-                    <button className="btn btn-primary">View Details</button>
-                  </Link>
+                  <button
+                    onClick={() => handlePrivateRoute(sportsToy._id)}
+                    className="btn btn-primary"
+                  >
+                    View Details
+                  </button>
                 </div>
               </div>
             </div>
           ))}
         </TabPanel>
         <TabPanel className="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {trucksCategory.map((truckToy) => (
+          {trucksCategory.map((truckToy) => (
             <div
               key={truckToy._id}
               className="card p-5 bg-base-100 shadow-lg border rounded-none"
@@ -95,9 +112,12 @@ const Category = () => {
                   />
                 </div>
                 <div className="text-end">
-                  <Link>
-                    <button className="btn btn-primary">View Details</button>
-                  </Link>
+                  <button
+                    onClick={() => handlePrivateRoute(truckToy._id)}
+                    className="btn btn-primary"
+                  >
+                    View Details
+                  </button>
                 </div>
               </div>
             </div>
@@ -128,9 +148,12 @@ const Category = () => {
                   />
                 </div>
                 <div className="text-end">
-                  <Link>
-                    <button className="btn btn-primary">View Details</button>
-                  </Link>
+                  <button
+                    onClick={() => handlePrivateRoute(regularCarToy._id)}
+                    className="btn btn-primary"
+                  >
+                    View Details
+                  </button>
                 </div>
               </div>
             </div>

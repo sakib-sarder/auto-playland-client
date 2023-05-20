@@ -4,7 +4,6 @@ import "@smastrom/react-rating/style.css";
 
 const ToyDetails = () => {
   const toy = useLoaderData();
-  console.log(toy);
   const {
     photoUrl,
     name,

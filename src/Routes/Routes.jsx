@@ -48,7 +48,11 @@ const router = createBrowserRouter([
       },
       {
         path: "toy/:id",
-        element: <ToyDetails></ToyDetails>,
+        element: (
+          <PrivateRoute>
+            <ToyDetails></ToyDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://auto-playland-server.vercel.app/all-toys/${params.id}`

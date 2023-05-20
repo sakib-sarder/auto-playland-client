@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const AllToys = () => {
   const [searchInput, setSearchInput] = useState("");
   const [allToys, setAllToys] = useState([]);
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`https://auto-playland-server.vercel.app/all-toys`)
@@ -11,7 +15,7 @@ const AllToys = () => {
       .then((data) => setAllToys(data));
   }, []);
 
-  // Search 
+  // Search
   const handleSearch = () => {
     if (!searchInput) {
       return;
@@ -21,6 +25,18 @@ const AllToys = () => {
     )
       .then((res) => res.json())
       .then((data) => setAllToys(data));
+  };
+
+  // protect private route
+  const handlePrivateRoute = (id) => {
+    if (user) {
+      navigate(`/toy/${id}`);
+      return;
+    } else {
+      toast("You have to log in first to view details");
+      navigate(`/toy/${id}`);
+      return;
+    }
   };
 
   return (
@@ -83,11 +99,12 @@ const AllToys = () => {
                 <td className="font-medium">${toy?.price}</td>
                 <td>{toy?.availableQuantity}</td>
                 <td>
-                  <Link to={`/toy/${toy?._id}`}>
-                    <button className="bg-slate-300 py-1 px-2 rounded-md font-medium hover:bg-gray-400 hover:text-white">
-                      Details
-                    </button>
-                  </Link>
+                  <button
+                    onClick={() => handlePrivateRoute(toy?._id)}
+                    className="bg-slate-300 py-1 px-2 rounded-md font-medium hover:bg-gray-400 hover:text-white"
+                  >
+                    Details
+                  </button>
                 </td>
               </tr>
             ))}

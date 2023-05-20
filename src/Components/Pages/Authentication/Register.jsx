@@ -5,13 +5,14 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 const Register = () => {
   const { createUser, updateUserInfo, setReload } = useContext(AuthContext);
+  const navigate = useNavigate();
+  
   const [error, setError] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [photoURL, setPhotoURL] = useState("");
 
-  const navigate = useNavigate();
   
   // Handle Register
   const handleRegister = (event) => {

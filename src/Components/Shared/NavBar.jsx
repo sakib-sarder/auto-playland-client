@@ -17,8 +17,9 @@ const NavBar = () => {
   return (
     <div className="container z-50 mx-auto relative border-b-2">
       <div className="hidden  py-2 lg:flex items-center justify-between">
-        <Link to="/">
+        <Link to="/" className="flex items-center gap-1">
           <img src={car} alt="logo" className="w-28" />
+          <h1 className="text-2xl font-bold text-gradient">Auto Playland</h1>
         </Link>
         <div>
           <ul className="flex gap-4 font-semibold">
@@ -63,7 +64,12 @@ const NavBar = () => {
               </li>
             )}
             <li>
-              <NavLink to="/blog">Blog</NavLink>
+              <NavLink
+                to="/blog"
+                className={({ isActive }) => (isActive ? "text-blue-600" : "")}
+              >
+                Blog
+              </NavLink>
             </li>
           </ul>
         </div>
@@ -92,9 +98,10 @@ const NavBar = () => {
         </div>
       </div>
       {/* Small Device  */}
-      <div className="flex items-center justify-between lg:hidden px-3">
-      <Link to="/">
+      <div className="flex items-center justify-between lg:hidden py-2 px-3">
+        <Link to="/" className="flex items-center gap-1">
           <img src={car} alt="logo" className="w-28" />
+          <h1 className="text-2xl font-bold text-gradient">Auto Playland</h1>
         </Link>
         <div onClick={() => setOpenMenu(!openMenu)}>
           {openMenu ? (

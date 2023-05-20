@@ -1,21 +1,27 @@
 import animation from "../../../assets/login.json";
 import { Player } from "@lottiefiles/react-lottie-player";
 import googleIcon from "../../../assets/google.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Login = () => {
   const { signInWithGoogle, LoginWithEmailPassword } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
+
+  const from = location.state?.from?.pathname || "/";
+
   // Google Login
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);
@@ -25,7 +31,10 @@ const Login = () => {
   const handleEmailPasswordLogin = (event) => {
     event.preventDefault();
     LoginWithEmailPassword(email, password)
-      .then((result) => console.log(result.user))
+      .then((result) => {
+        console.log(result.user);
+        navigate(from, { replace: true });
+      })
       .catch((error) => {
         if (
           error.code === "auth/wrong-password" ||
