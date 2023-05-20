@@ -1,7 +1,9 @@
 import { FiEdit } from "react-icons/fi";
 import { FaTrash } from "react-icons/fa";
+import Swal from "sweetalert2";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import { Link } from "react-router-dom";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
@@ -14,13 +16,30 @@ const MyToys = () => {
   }, [user]);
 
   const handleDelete = (id) => {
-    fetch(`https://auto-playland-server.vercel.app/my-toys/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://auto-playland-server.vercel.app/my-toys/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+              const remaining = toys.filter((toy) => toy._id === id);
+              setToys(remaining);
+            }
+          });
+      }
+    });
   };
 
   return (
@@ -46,19 +65,21 @@ const MyToys = () => {
                 <td>
                   <img src={toy?.photoUrl} alt="Toy Photo" className="w-40" />
                 </td>
-                <td>{toy?.name}</td>
+                <td>{toy?.name.slice(0,15)}....</td>
                 <td>{toy?.subCategory}</td>
                 <td className="font-medium">${toy?.price}</td>
                 <td>{toy?.availableQuantity}</td>
                 <td>
                   <div className="flex justify-center gap-2 items-center">
-                    <label
-                      htmlFor="update-modal"
-                      className="flex items-center gap-1 bg-slate-300 hover:bg-gray-400 hover:text-white px-2 py-1 rounded-md font-medium"
-                    >
-                      <FiEdit />
-                      <span>Edit</span>
-                    </label>
+                    <Link to={`/update-toy/${toy?._id}`}>
+                      <button
+                        htmlFor="update-modal"
+                        className="flex items-center gap-1 bg-slate-300 hover:bg-gray-400 hover:text-white px-2 py-1 rounded-md font-medium"
+                      >
+                        <FiEdit />
+                        <span>Edit</span>
+                      </button>
+                    </Link>
                     <button
                       onClick={() => handleDelete(toy?._id)}
                       className="flex items-center gap-1 bg-slate-300 hover:bg-gray-400 hover:text-white px-2 py-1 rounded-md font-medium"

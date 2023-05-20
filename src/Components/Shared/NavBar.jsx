@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import car from "../../assets/car.png";
+import car from "../../assets/logo.png";
 import { HiOutlineBars3CenterLeft } from "react-icons/hi2";
 import { RxCross1 } from "react-icons/rx";
 import { useContext, useState } from "react";
@@ -18,35 +18,48 @@ const NavBar = () => {
     <div className="container z-50 mx-auto relative border-b-2">
       <div className="hidden  py-2 lg:flex items-center justify-between">
         <Link to="/">
-          <div className="flex items-center gap-1">
-            <img src={car} alt="logo" className="w-16" />{" "}
-            <span className="text-3xl font-bold">AutoPlayland</span>
-          </div>
+          <img src={car} alt="logo" className="w-28" />
         </Link>
         <div>
           <ul className="flex gap-4 font-semibold">
             <li>
-              <NavLink to="/" className={({ isActive }) =>
-                    isActive ? "text-blue-600" : ""
-                  }>Home</NavLink>
+              <NavLink
+                to="/"
+                className={({ isActive }) => (isActive ? "text-blue-600" : "")}
+              >
+                Home
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/all-toys" className={({ isActive }) =>
-                    isActive ? "text-blue-600" : ""
-                  }>All Toys</NavLink>
+              <NavLink
+                to="/all-toys"
+                className={({ isActive }) => (isActive ? "text-blue-600" : "")}
+              >
+                All Toys
+              </NavLink>
             </li>
             {user && (
               <li>
-                <NavLink to="/my-toys" className={({ isActive }) =>
+                <NavLink
+                  to="/my-toys"
+                  className={({ isActive }) =>
                     isActive ? "text-blue-600" : ""
-                  }>My Toys</NavLink>
+                  }
+                >
+                  My Toys
+                </NavLink>
               </li>
             )}
             {user && (
               <li>
-                <NavLink to="/add-toy" className={({ isActive }) =>
+                <NavLink
+                  to="/add-toy"
+                  className={({ isActive }) =>
                     isActive ? "text-blue-600" : ""
-                  }>Add a Toy</NavLink>
+                  }
+                >
+                  Add a Toy
+                </NavLink>
               </li>
             )}
             <li>
@@ -80,11 +93,8 @@ const NavBar = () => {
       </div>
       {/* Small Device  */}
       <div className="flex items-center justify-between lg:hidden px-3">
-        <Link to="/">
-          <div className="flex items-center gap-1">
-            <img src={car} alt="logo" className="w-16" />{" "}
-            <span className="text-3xl font-bold">AutoPlayland</span>
-          </div>
+      <Link to="/">
+          <img src={car} alt="logo" className="w-28" />
         </Link>
         <div onClick={() => setOpenMenu(!openMenu)}>
           {openMenu ? (

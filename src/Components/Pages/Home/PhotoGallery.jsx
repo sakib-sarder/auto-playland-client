@@ -75,6 +75,20 @@ const PhotoGallery = () => {
           className="h-full rounded-lg hover-zoom-in"
         />
       </div>
+      <div className=" opacity-90  shadow-xl image-full" data-aos="zoom-in">
+        <img
+          src="https://i.ibb.co/86WxP4v/pexels-polesie-toys-4487981.jpg"
+          alt="Car Photo"
+          className="h-full rounded-lg hover-zoom-in"
+        />
+      </div>
+      <div className=" opacity-90  shadow-xl image-full" data-aos="zoom-in">
+        <img
+          src="https://i.ibb.co/G0Q6Qm6/gettyimages-488356622.jpg"
+          alt="Car Photo"
+          className="h-full rounded-lg hover-zoom-in"
+        />
+      </div>
     </div>
   );
 };

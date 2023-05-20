@@ -1,4 +1,4 @@
-import car from "../../assets/car.png"
+import car from "../../assets/logo.png"
 const Footer = () => {
   return (
     <footer className="container mx-auto mt-6">
@@ -26,7 +26,7 @@ const Footer = () => {
       </div>
       <div className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
         <div className="items-center grid-flow-col">
-          <img src={car} alt="logo" className="w-12"/>
+          <img src={car} alt="logo" className="w-28"/>
           <p>
             Toy Playland.com <br />
             Providing reliable toy car since 1992

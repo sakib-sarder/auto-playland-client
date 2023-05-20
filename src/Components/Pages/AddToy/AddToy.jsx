@@ -30,7 +30,6 @@ const AddToy = () => {
       availableQuantity,
       details,
     };
-    console.log(newToy);
 
     //Mongodb Post
     fetch("https://auto-playland-server.vercel.app/toys", {
@@ -64,6 +63,7 @@ const AddToy = () => {
                 Name
               </label>
               <input
+                required
                 type="text"
                 placeholder="Name"
                 id="name"
@@ -75,6 +75,7 @@ const AddToy = () => {
                 Photo URL
               </label>
               <input
+                required
                 name="photoURL"
                 type="url"
                 placeholder="Photo URL"
@@ -87,6 +88,7 @@ const AddToy = () => {
                 Seller Name
               </label>
               <input
+                required
                 name="sellerName"
                 type="text"
                 placeholder="Seller Name"
@@ -100,6 +102,7 @@ const AddToy = () => {
                 Seller Email
               </label>
               <input
+                required
                 type="email"
                 placeholder="Seller Email"
                 id="email"
@@ -126,6 +129,8 @@ const AddToy = () => {
                 Price
               </label>
               <input
+                name="price"
+                required
                 type="text"
                 placeholder="Price"
                 id="price"
@@ -137,6 +142,7 @@ const AddToy = () => {
                 Rating
               </label>
               <input
+                required
                 type="text"
                 name="rating"
                 placeholder="Rating"
@@ -149,6 +155,7 @@ const AddToy = () => {
                 Available Quantity
               </label>
               <input
+                required
                 name="availableQuantity"
                 type="number"
                 placeholder="Available Quantity"
@@ -161,6 +168,7 @@ const AddToy = () => {
                 Detail Description
               </label>
               <textarea
+                required
                 name="details"
                 id="details"
                 className="input input-bordered input-warning container  py-2"

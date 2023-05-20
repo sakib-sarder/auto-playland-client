@@ -10,7 +10,12 @@ const AllToys = () => {
       .then((res) => res.json())
       .then((data) => setAllToys(data));
   }, []);
+
+  // Search 
   const handleSearch = () => {
+    if (!searchInput) {
+      return;
+    }
     fetch(
       `https://auto-playland-server.vercel.app/toySearchByName/${searchInput}`
     )
@@ -78,7 +83,7 @@ const AllToys = () => {
                 <td className="font-medium">${toy?.price}</td>
                 <td>{toy?.availableQuantity}</td>
                 <td>
-                  <Link to={`/toy-details/${toy?._id}`}>
+                  <Link to={`/toy/${toy?._id}`}>
                     <button className="bg-slate-300 py-1 px-2 rounded-md font-medium hover:bg-gray-400 hover:text-white">
                       Details
                     </button>
