@@ -2,12 +2,14 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import useTitle from "../../../Hooks/useTitle";
 
 const AllToys = () => {
   const [searchInput, setSearchInput] = useState("");
   const [allToys, setAllToys] = useState([]);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+  useTitle("All Toy")
 
   useEffect(() => {
     fetch(`https://auto-playland-server.vercel.app/all-toys`)

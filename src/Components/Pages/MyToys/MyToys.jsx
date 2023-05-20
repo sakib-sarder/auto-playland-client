@@ -4,10 +4,12 @@ import Swal from "sweetalert2";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { Link } from "react-router-dom";
+import useTitle from "../../../Hooks/useTitle";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
+  useTitle("My Toy")
 
   useEffect(() => {
     fetch(`https://auto-playland-server.vercel.app/toys/${user?.email}`)

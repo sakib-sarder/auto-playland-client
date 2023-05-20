@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import animation from "../../../assets/error-page.json";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { AiFillHome } from "react-icons/ai";
+import useTitle from "../../../Hooks/useTitle";
 
 const ErrorPage = () => {
+  useTitle("Error Page")
   return (
     <div className="min-h-screen flex justify-center items-center">
       <div className="">

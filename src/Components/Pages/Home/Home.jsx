@@ -1,8 +1,10 @@
+import useTitle from "../../../Hooks/useTitle";
 import Banner from "./Banner";
 import Category from "./Category";
 import PhotoGallery from "./PhotoGallery";
 
 const Home = () => {
+  useTitle("Home")
   return (
     <div className="container mx-auto">
       <Banner />

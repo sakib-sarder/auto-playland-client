@@ -3,10 +3,12 @@ import animation from "../../../assets/login.json";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import useTitle from "../../../Hooks/useTitle";
 const Register = () => {
   const { createUser, updateUserInfo, setReload } = useContext(AuthContext);
   const navigate = useNavigate();
-  
+  useTitle("Register")
+
   const [error, setError] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

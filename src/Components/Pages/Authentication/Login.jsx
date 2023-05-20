@@ -4,6 +4,7 @@ import googleIcon from "../../../assets/google.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import useTitle from "../../../Hooks/useTitle";
 
 const Login = () => {
   const { signInWithGoogle, LoginWithEmailPassword } = useContext(AuthContext);
@@ -12,6 +13,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
+  useTitle("Login")
 
   const from = location.state?.from?.pathname || "/";
 
