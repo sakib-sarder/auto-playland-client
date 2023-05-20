@@ -18,7 +18,7 @@ const Banner = () => {
         <button className="btn btn-primary">Buy Now</button>
       </div>
       <div data-aos="fade-left">
-        <Player autoplay loop src={animation} className=""></Player>
+        <Player autoplay loop src={animation}></Player>
       </div>
     </div>
   );
