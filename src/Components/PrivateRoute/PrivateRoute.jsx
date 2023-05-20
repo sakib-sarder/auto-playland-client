@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
-const PrivateMyToys = ({ children }) => {
+const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
 
   if (loading) {
@@ -20,4 +20,4 @@ const PrivateMyToys = ({ children }) => {
   return <Navigate to="/login" />;
 };
 
-export default PrivateMyToys;
+export default PrivateRoute;

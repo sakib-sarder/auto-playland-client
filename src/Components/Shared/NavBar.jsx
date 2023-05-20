@@ -50,7 +50,7 @@ const NavBar = () => {
               </li>
             )}
             <li>
-              <NavLink>Blog</NavLink>
+              <NavLink to="/blog">Blog</NavLink>
             </li>
           </ul>
         </div>
@@ -96,7 +96,7 @@ const NavBar = () => {
       </div>
       <div>
         {openMenu && (
-          <div className="px-2 pt-3 bg-gray-100 absolute top-16 z-20 w-full lg:hidden">
+          <div className="px-2 pt-3 bg-gray-100 absolute top-16 z-20 w-full rounded-b-md lg:hidden">
             {user ? (
               <div className="flex flex-row-reverse items-center gap-3 border-b-2 pb-2">
                 <div
