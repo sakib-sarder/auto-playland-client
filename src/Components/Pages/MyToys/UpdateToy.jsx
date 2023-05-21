@@ -9,7 +9,7 @@ const UpdateToy = () => {
   useTitle("Update Toy")
 
   useEffect(() => {
-    fetch(`http://localhost:5000/all-toys/${id}`)
+    fetch(`https://auto-playland-server.vercel.app/all-toys/${id}`)
       .then((res) => res.json())
       .then((data) => setToy(data));
   }, [id]);
@@ -22,7 +22,7 @@ const UpdateToy = () => {
     const details = form.details.value;
 
     const updatedInfo = { price, availableQuantity, details };
-    fetch(`http://localhost:5000/my-toy/${id}`, {
+    fetch(`https://auto-playland-server.vercel.app/my-toy/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

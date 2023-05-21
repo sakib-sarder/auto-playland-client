@@ -12,7 +12,7 @@ const Category = () => {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch("http://localhost:5000/all-toys")
+    fetch("https://auto-playland-server.vercel.app/all-toys")
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);

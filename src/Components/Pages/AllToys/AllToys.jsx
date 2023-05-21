@@ -17,12 +17,10 @@ const AllToys = () => {
     const [value, type] = selected
       .split("-")
       .map((item) => item.toLocaleLowerCase());
-    fetch(`http://localhost:5000/all-toys?value=${value}&type=${type}`)
+    fetch(`https://auto-playland-server.vercel.app/all-toys?value=${value}&type=${type}`)
       .then((res) => res.json())
       .then((data) => setAllToys(data));
   }, [selected]);
-
-  console.log(allToys);
 
 
   // Search
@@ -30,7 +28,7 @@ const AllToys = () => {
     if (!searchInput) {
       return;
     }
-    fetch(`http://localhost:5000/toySearchByName/${searchInput}`)
+    fetch(`https://auto-playland-server.vercel.app/toySearchByName/${searchInput}`)
       .then((res) => res.json())
       .then((data) => setAllToys(data));
   };
@@ -57,7 +55,7 @@ const AllToys = () => {
       <div className="form-control">
         <div className="input-group flex justify-center mb-4">
           <input
-            onChange={(event) => setSearchInput(event.target.value)}
+            onChange={(event) => setSearchInput(event.target.value.trim())}
             type="text"
             placeholder="Search…"
             className="border border-slate-400 w-full md:w-2/6 ps-3 text-lg"

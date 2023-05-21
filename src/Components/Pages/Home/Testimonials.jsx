@@ -44,11 +44,14 @@ const Testimonials = () => {
           <div className="card-body">
             <h2 className="card-title">Farhan Labib</h2>
             <p className="text-sm">
-              <span className="font-bold">Purchased Toy:</span> Hot Wheels Marvel Spider-Man Web-Car{" "}
+              <span className="font-bold">Purchased Toy:</span> Hot Wheels
+              Marvel Spider-Man Web-Car{" "}
             </p>
             <p className="text-center font-semibold text-lg ">Toy Review</p>
             <p className="text-center text-xs">
-            Hot Wheels Marvel Spider-Man Web-Car: Sleek design, durable build, compatible with Hot Wheels tracks. Versatile and captures the essence of Spider-Man.
+              Hot Wheels Marvel Spider-Man Web-Car: Sleek design, durable build,
+              compatible with Hot Wheels tracks. Versatile and captures the
+              essence of Spider-Man.
             </p>
             <Rating
               className="mx-auto"
@@ -59,7 +62,7 @@ const Testimonials = () => {
           </div>
         </div>
         {/* First Card  */}
-        <div className="card bg-gray-50 rounded-none shadow-xl">
+        <div className="card bg-gray-50 rounded-none shadow-lg">
           <div className="avatar mx-auto">
             <div className="w-28 rounded mt-4">
               <img src="https://i.ibb.co/gwz0gqX/IMG-20211018-WA0001.jpg" />
@@ -68,14 +71,16 @@ const Testimonials = () => {
           <div className="card-body">
             <h2 className="card-title">Sajidur Rahman</h2>
             <p className="text-sm">
-              <span className="font-bold">Purchased Toy:</span> Jada Toys:
-              Disney Pixar Cars 1:24 Lightning McQueen XRS RC Remote Control Car{" "}
+              <span className="font-bold">Purchased Toy:</span> Rev up the fun
+              with Just Trucks Garbage Truck! Perfect for kids and adults, this
+              toy delivers hours of interactive play. Get ready to clean up the
+              imaginary streets!{" "}
             </p>
             <p className="text-center font-semibold text-lg ">Toy Review</p>
             <p className="text-center text-xs">
-              I love the Jada Toys Disney Pixar Cars 1:24 Lightning McQueen XRS
-              RC Car! It is incredibly detailed, easy to control, and brings the
-              beloved character to life. Highly recommended!
+              Rev up the fun with Just Trucks Garbage Truck! Perfect for kids
+              and adults, this toy delivers hours of interactive play. Get ready
+              to clean up the imaginary streets!
             </p>
             <Rating
               className="mx-auto"

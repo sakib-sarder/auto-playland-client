@@ -12,7 +12,7 @@ const MyToys = () => {
   useTitle("My Toy")
 
   useEffect(() => {
-    fetch(`http://localhost:5000/toys/${user?.email}`)
+    fetch(`https://auto-playland-server.vercel.app/toys/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, [user]);
@@ -28,7 +28,7 @@ const MyToys = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/my-toys/${id}`, {
+        fetch(`https://auto-playland-server.vercel.app/my-toys/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
