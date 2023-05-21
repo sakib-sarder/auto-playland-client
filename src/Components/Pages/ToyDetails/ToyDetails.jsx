@@ -5,7 +5,7 @@ import useTitle from "../../../Hooks/useTitle";
 
 const ToyDetails = () => {
   const toy = useLoaderData();
-  useTitle("Toy Details")
+  useTitle("Toy Details");
 
   const {
     photoUrl,
@@ -19,14 +19,14 @@ const ToyDetails = () => {
   } = toy;
   return (
     <div
-      className="hero container mx-auto my-6"
+      className="hero container min-h-[70vh] mx-auto my-6"
       style={{
         backgroundImage: `url("${photoUrl}")`,
       }}
     >
-      <div className="hero-overlay bg-opacity-80"></div>
+      <div className="hero-overlay  bg-opacity-70"></div>
       <div className="hero-content text-center text-neutral-content">
-        <div className="flex flex-col md:flex-row my-10 glass p-1">
+        <div className="flex flex-col lg:flex-row my-10 glass ">
           <img src={photoUrl} alt="car" />
           <div className="px-2 py-2 text-left space-y-2">
             <h2 className="card-title ">{name}</h2>
@@ -49,12 +49,8 @@ const ToyDetails = () => {
             </p>
             <p className="tracking-wider">
               <span className="font-thin text-sm">Details:</span>
-              <span className="text-xs text-gray-50">{details.slice(0, 200)}... <button className="underline">Read more</button></span>
+              <span className="text-xs text-gray-50">{details}</span>
             </p>
-
-            {/* <div className="card-actions justify-end">
-              <button className="btn btn-primary">Learn now!</button>
-            </div> */}
           </div>
         </div>
       </div>

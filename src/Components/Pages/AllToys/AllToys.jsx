@@ -9,8 +9,10 @@ const AllToys = () => {
   const [allToys, setAllToys] = useState([]);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
-  useTitle("All Toy")
+  useTitle("All Toy");
 
+
+  
   useEffect(() => {
     fetch(`https://auto-playland-server.vercel.app/all-toys`)
       .then((res) => res.json())

@@ -18,22 +18,21 @@ const Category = () => {
   }, []);
 
   const sportsCategory = toys.filter((toy) => toy.subCategory === "Sports Car");
-  
+
   const trucksCategory = toys.filter((toy) => toy.subCategory === "Truck");
-  
+
   const regularCarCategory = toys.filter(
     (toy) => toy.subCategory === "Regular Car"
   );
 
   const handlePrivateRoute = (id) => {
     if (user) {
-      navigate(`/toy/${id}`)
+      navigate(`/toy/${id}`);
       return;
     } else {
-      toast("You have to log in first to view details")
-      navigate(`/toy/${id}`)
+      toast("You have to log in first to view details");
+      navigate(`/toy/${id}`);
     }
-
   };
 
   return (
@@ -54,51 +53,52 @@ const Category = () => {
         <TabPanel className="mt-12 grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {sportsCategory.map((sportsToy) => (
             <div
-              key={sportsToy._id}
-              className="card p-5 bg-base-100 shadow-lg border rounded-none"
-            >
-              <img
-                src={sportsToy?.photoUrl}
-                alt={sportsToy?.name}
-                className="h-72"
-              />
-              <div className="pt-2 ">
-                <h1 className="text-left text-lg tracking-wide font-bold">
-                  {sportsToy?.name}
-                </h1>
-                <p className="font-medium">Price: ${sportsToy?.price}</p>
-                <div className="tracking-wider flex items-center gap-2">
-                  <p>Rating:</p>
-                  <Rating
-                    style={{ maxWidth: 100 }}
-                    value={sportsToy.rating}
-                    readOnly
-                  />
-                </div>
-                <div className="text-end">
-                  <button
-                    onClick={() => handlePrivateRoute(sportsToy._id)}
-                    className="primary-btn"
-                  >
-                    View Details
-                  </button>
-                </div>
+            key={sportsToy._id}
+            className="card p-5 bg-base-100 shadow-lg border rounded-none flex flex-col"
+          >
+            <img
+              src={sportsToy?.photoUrl}
+              alt={sportsToy?.name}
+              className="h-72"
+            />
+            <div className="flex-grow pt-2">
+              <h1 className="text-left text-lg tracking-wide font-bold">
+                {sportsToy?.name}
+              </h1>
+              <p className="font-medium">Price: ${sportsToy?.price}</p>
+              <div className="tracking-wider flex items-center gap-2">
+                <p>Rating:</p>
+                <Rating
+                  style={{ maxWidth: 100 }}
+                  value={sportsToy.rating}
+                  readOnly
+                />
               </div>
             </div>
+            <div className="flex justify-end">
+              <button
+                onClick={() => handlePrivateRoute(sportsToy._id)}
+                className="primary-btn"
+              >
+                View Details
+              </button>
+            </div>
+          </div>
+          
           ))}
         </TabPanel>
         <TabPanel className="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {trucksCategory.map((truckToy) => (
             <div
               key={truckToy._id}
-              className="card p-5 bg-base-100 shadow-lg border rounded-none"
+              className="card p-5 bg-base-100 shadow-lg border rounded-none flex flex-col"
             >
               <img
                 src={truckToy?.photoUrl}
                 alt={truckToy?.name}
                 className="h-72"
               />
-              <div className="pt-2">
+              <div className="flex-grow pt-2">
                 <h1 className="text-left text-lg tracking-wide font-bold">
                   {truckToy?.name}
                 </h1>
@@ -111,14 +111,14 @@ const Category = () => {
                     readOnly
                   />
                 </div>
-                <div className="flex my-auto justify-end">
-                  <button
-                    onClick={() => handlePrivateRoute(truckToy._id)}
-                    className="primary-btn"
-                  >
-                    View Details
-                  </button>
-                </div>
+              </div>
+              <div className="flex justify-end">
+                <button
+                  onClick={() => handlePrivateRoute(truckToy._id)}
+                  className="primary-btn"
+                >
+                  View Details
+                </button>
               </div>
             </div>
           ))}
@@ -127,14 +127,14 @@ const Category = () => {
           {regularCarCategory.map((regularCarToy) => (
             <div
               key={regularCarToy._id}
-              className="card p-5 bg-base-100 shadow-lg border rounded-none"
+              className="card p-5 bg-base-100 shadow-lg border rounded-none flex flex-col"
             >
               <img
                 src={regularCarToy?.photoUrl}
                 alt={regularCarToy?.name}
                 className="h-72"
               />
-              <div className="pt-2 ">
+              <div className="flex-grow pt-2">
                 <h1 className="text-left text-lg tracking-wide font-bold">
                   {regularCarToy?.name}
                 </h1>
@@ -147,14 +147,14 @@ const Category = () => {
                     readOnly
                   />
                 </div>
-                <div className="text-end mt-4">
-                  <button
-                    onClick={() => handlePrivateRoute(regularCarToy._id)}
-                    className="primary-btn"
-                  >
-                    View Details
-                  </button>
-                </div>
+              </div>
+              <div className="flex justify-end">
+                <button
+                  onClick={() => handlePrivateRoute(regularCarToy._id)}
+                  className="primary-btn"
+                >
+                  View Details
+                </button>
               </div>
             </div>
           ))}
