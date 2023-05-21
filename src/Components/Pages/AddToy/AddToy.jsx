@@ -47,7 +47,7 @@ const AddToy = () => {
           toast("successfully done");
         }
       });
-    form.reset();
+    // form.reset();
   };
   return (
     <div className="mt-4 md:mt-12 px-3 md:px-0">

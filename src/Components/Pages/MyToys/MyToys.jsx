@@ -7,15 +7,34 @@ import { Link } from "react-router-dom";
 import useTitle from "../../../Hooks/useTitle";
 
 const MyToys = () => {
+  const options = ["price-acending", "price-decending"];
   const { user } = useContext(AuthContext);
+  const [selected, setSelected] = useState(options[0]);
   const [toys, setToys] = useState([]);
-  useTitle("My Toy")
+  useTitle("My Toy");
 
   useEffect(() => {
     fetch(`https://auto-playland-server.vercel.app/toys/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, [user]);
+
+  // Sort Method
+  useEffect(() => {
+    const [value, type] = selected
+      .split("-")
+      .map((item) => item.toLocaleLowerCase());
+    fetch(
+      `https://auto-playland-server.vercel.app/all-toys?value=${value}&type=${type}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        const sortedData = data.filter((toy) => toy.sellerEmail === user.email);
+        setToys(sortedData);
+      });
+  }, [selected, toys, user]);
+
+  console.log(toys);
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -44,12 +63,21 @@ const MyToys = () => {
     });
   };
 
-
   return (
     <div className="container mx-auto pt-6">
       <div>
         <h1 className="text-gradient text-5xl my-3 font-bold">My Toys</h1>
       </div>
+      <select
+        className="w-40 border mx-auto font-semibold px-3 py-2 rounded-md"
+        onChange={(e) => setSelected(e.target.value)}
+      >
+        {options.map((value) => (
+          <option value={value} key={value}>
+            {value}
+          </option>
+        ))}
+      </select>
       <div className="overflow-x-auto">
         <table className=" table  w-full text-center">
           <thead>
