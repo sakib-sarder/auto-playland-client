@@ -5,8 +5,6 @@ import { toast } from "react-toastify";
 import useTitle from "../../../Hooks/useTitle";
 
 const AllToys = () => {
-  const options = ["price-acending", "price-decending"];
-  const [selected, setSelected] = useState(options[0]);
   const [searchInput, setSearchInput] = useState("");
   const [allToys, setAllToys] = useState([]);
   const { user } = useContext(AuthContext);
@@ -14,21 +12,19 @@ const AllToys = () => {
   useTitle("All Toy");
 
   useEffect(() => {
-    const [value, type] = selected
-      .split("-")
-      .map((item) => item.toLocaleLowerCase());
-    fetch(`https://auto-playland-server.vercel.app/all-toys?value=${value}&type=${type}`)
+    fetch(`https://auto-playland-server.vercel.app/all-toys`)
       .then((res) => res.json())
       .then((data) => setAllToys(data));
-  }, [selected]);
-
+  }, []);
 
   // Search
   const handleSearch = () => {
     if (!searchInput) {
       return;
     }
-    fetch(`https://auto-playland-server.vercel.app/toySearchByName/${searchInput}`)
+    fetch(
+      `https://auto-playland-server.vercel.app/toySearchByName/${searchInput}`
+    )
       .then((res) => res.json())
       .then((data) => setAllToys(data));
   };
@@ -77,13 +73,6 @@ const AllToys = () => {
             </svg>
           </button>
         </div>
-          <select className="w-40 border mx-auto font-semibold px-3 py-2 rounded-md" onChange={(e) => setSelected(e.target.value)}>
-            {options.map((value) => (
-              <option value={value} key={value}>
-                {value}
-              </option>
-            ))}
-          </select>
       </div>
       <div className="overflow-x-auto container mx-auto mt-8">
         <table className=" table  w-full text-center">
