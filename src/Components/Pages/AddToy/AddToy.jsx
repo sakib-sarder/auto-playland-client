@@ -1,13 +1,12 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { toast } from "react-toastify";
-import "./AddToy.css";
 import "react-toastify/dist/ReactToastify.css";
 import useTitle from "../../../Hooks/useTitle";
 
 const AddToy = () => {
   const { user } = useContext(AuthContext);
-  useTitle("Add a Toy")
+  useTitle("Add a Toy");
 
   const handleAddToy = (event) => {
     event.preventDefault();
@@ -34,7 +33,7 @@ const AddToy = () => {
     };
 
     //Mongodb Post
-    fetch("https://auto-playland-server.vercel.app/toys", {
+    fetch("http://localhost:5000/toys", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -52,12 +51,15 @@ const AddToy = () => {
   };
   return (
     <div className="mt-4 md:mt-12 px-3 md:px-0">
-      <div className="add-toy rounded-lg h-[20vh]  bg-cover mx-auto container flex items-center justify-center">
-        <h1 className="text-center text-gradient text-6xl font-bold ">
-          Add A Toy
-        </h1>
-      </div>
-      <form onSubmit={handleAddToy} className="container mx-auto">
+      <form
+        onSubmit={handleAddToy}
+        className="container mx-auto md:w-2/3 lg:w-2/4 border my-2 mt-8 rounded-lg shadow-lg p-4"
+      >
+        <div className="mx-auto container flex items-center justify-center">
+          <h1 className="text-center text-gradient text-5xl font-bold ">
+            Add A Toy
+          </h1>
+        </div>
         <div className=" flex justify-center items-center">
           <div className="md:grid grid-cols-2 w-full gap-2">
             <div>
@@ -165,20 +167,19 @@ const AddToy = () => {
                 className="input input-bordered input-info w-full "
               />
             </div>
-            <div>
-              <label htmlFor="details" className="label">
-                Detail Description
-              </label>
-              <textarea
-                required
-                name="details"
-                id="details"
-                className="input input-bordered input-warning container  py-2"
-                placeholder="Detail Description"
-              ></textarea>
-            </div>
+            <div></div>
           </div>
         </div>
+        <label htmlFor="details" className="label">
+          Detail Description
+        </label>
+        <textarea
+          required
+          name="details"
+          id="details"
+          className="input input-bordered overflow-hidden scrollbar-none input-info h-20 container  py-2"
+          placeholder="Detail Description"
+        ></textarea>
         <input
           type="submit"
           value="Submit"

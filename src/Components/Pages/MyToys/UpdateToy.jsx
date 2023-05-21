@@ -9,7 +9,7 @@ const UpdateToy = () => {
   useTitle("Update Toy")
 
   useEffect(() => {
-    fetch(`https://auto-playland-server.vercel.app/all-toys/${id}`)
+    fetch(`http://localhost:5000/all-toys/${id}`)
       .then((res) => res.json())
       .then((data) => setToy(data));
   }, [id]);
@@ -22,7 +22,7 @@ const UpdateToy = () => {
     const details = form.details.value;
 
     const updatedInfo = { price, availableQuantity, details };
-    fetch(`https://auto-playland-server.vercel.app/my-toy/${id}`, {
+    fetch(`http://localhost:5000/my-toy/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -77,7 +77,7 @@ const UpdateToy = () => {
               defaultValue={toy?.details}
               name="details"
               id="details"
-              className="input input-bordered input-warning container  py-2"
+              className="input h-20 input-info container overflow-hidden scrollbar-none py-2"
               placeholder="Detail Description"
             ></textarea>
           </div>

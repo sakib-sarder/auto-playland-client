@@ -5,28 +5,32 @@ import { toast } from "react-toastify";
 import useTitle from "../../../Hooks/useTitle";
 
 const AllToys = () => {
+  const options = ["price-acending", "price-decending"];
+  const [selected, setSelected] = useState(options[0]);
   const [searchInput, setSearchInput] = useState("");
   const [allToys, setAllToys] = useState([]);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   useTitle("All Toy");
 
-
-  
   useEffect(() => {
-    fetch(`https://auto-playland-server.vercel.app/all-toys`)
+    const [value, type] = selected
+      .split("-")
+      .map((item) => item.toLocaleLowerCase());
+    fetch(`http://localhost:5000/all-toys?value=${value}&type=${type}`)
       .then((res) => res.json())
       .then((data) => setAllToys(data));
-  }, []);
+  }, [selected]);
+
+  console.log(allToys);
+
 
   // Search
   const handleSearch = () => {
     if (!searchInput) {
       return;
     }
-    fetch(
-      `https://auto-playland-server.vercel.app/toySearchByName/${searchInput}`
-    )
+    fetch(`http://localhost:5000/toySearchByName/${searchInput}`)
       .then((res) => res.json())
       .then((data) => setAllToys(data));
   };
@@ -51,7 +55,7 @@ const AllToys = () => {
         </h1>
       </div>
       <div className="form-control">
-        <div className="input-group flex justify-center ">
+        <div className="input-group flex justify-center mb-4">
           <input
             onChange={(event) => setSearchInput(event.target.value)}
             type="text"
@@ -75,6 +79,13 @@ const AllToys = () => {
             </svg>
           </button>
         </div>
+          <select className="w-40 border mx-auto font-semibold px-3 py-2 rounded-md" onChange={(e) => setSelected(e.target.value)}>
+            {options.map((value) => (
+              <option value={value} key={value}>
+                {value}
+              </option>
+            ))}
+          </select>
       </div>
       <div className="overflow-x-auto container mx-auto mt-8">
         <table className=" table  w-full text-center">
