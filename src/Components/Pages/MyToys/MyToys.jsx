@@ -69,7 +69,7 @@ const MyToys = () => {
         <h1 className="text-gradient text-5xl my-3 font-bold">My Toys</h1>
       </div>
       <select
-        className="w-40 border mx-auto font-semibold px-3 py-2 rounded-md"
+        className="w-40 border mx-auto font-semibold px-3 py-2 mb-6 rounded-md"
         onChange={(e) => setSelected(e.target.value)}
       >
         {options.map((value) => (
