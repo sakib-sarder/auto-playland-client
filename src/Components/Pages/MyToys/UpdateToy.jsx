@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import useTitle from "../../../Hooks/useTitle";
 
 const UpdateToy = () => {
   const id = useParams().id;
   const [toy, setToy] = useState({});
-  useTitle("Update Toy")
+  useTitle("Update Toy");
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`https://auto-playland-server.vercel.app/all-toys/${id}`)
@@ -31,9 +32,9 @@ const UpdateToy = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.modifiedCount > 0) {
           toast("Successfully Updated");
+          navigate("/my-toys")
         }
       });
   };
