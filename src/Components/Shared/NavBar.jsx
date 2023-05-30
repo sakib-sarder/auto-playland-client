@@ -17,9 +17,8 @@ const NavBar = () => {
   return (
     <div className="container z-50 mx-auto relative border-b-2">
       <div className="hidden  py-2 lg:flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-1">
+        <Link>
           <img src={car} alt="logo" className="w-28" />
-          <h1 className="text-2xl font-bold text-gradient">Auto Playland</h1>
         </Link>
         <div>
           <ul className="flex gap-4 font-semibold">
@@ -99,9 +98,8 @@ const NavBar = () => {
       </div>
       {/* Small Device  */}
       <div className="flex items-center justify-between lg:hidden py-2 px-3">
-        <Link to="/" className="flex items-center gap-1">
+        <Link to="/">
           <img src={car} alt="logo" className="w-28" />
-          <h1 className="text-2xl font-bold text-gradient">Auto Playland</h1>
         </Link>
         <div onClick={() => setOpenMenu(!openMenu)}>
           {openMenu ? (
@@ -116,17 +114,12 @@ const NavBar = () => {
           <div className="px-2 pt-3 bg-gray-100 absolute top-16 z-20 w-full rounded-b-md lg:hidden">
             {user ? (
               <div className="flex flex-row-reverse items-center gap-3 border-b-2 pb-2">
-                <div
-                  className="tooltip tooltip-info tooltip-bottom"
-                  data-tip={user.displayName}
-                >
-                  <img
-                    src={user?.photoURL}
-                    alt="profile photo"
-                    className="w-12 h-12 rounded-full"
-                  />
-                </div>
-                <p className="text-2xl font-medium">{user.displayName}</p>
+                <img
+                  src={user?.photoURL}
+                  alt="profile photo"
+                  className="w-12 h-12 rounded-full"
+                />
+                <p className="text-xl font-medium">{user.displayName}</p>
               </div>
             ) : (
               <Link className="flex justify-end" to="/login">
