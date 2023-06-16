@@ -32,7 +32,7 @@ const MyToys = () => {
         const sortedData = data.filter((toy) => toy.sellerEmail === user.email);
         setToys(sortedData);
       });
-  }, [selected, toys, user]);
+  }, [selected, user]);
 
   console.log(toys);
 

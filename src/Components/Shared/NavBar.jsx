@@ -103,9 +103,9 @@ const NavBar = () => {
         </Link>
         <div onClick={() => setOpenMenu(!openMenu)}>
           {openMenu ? (
-            <RxCross1 className="text-4xl" />
+            <RxCross1 className="text-4xl cursor-pointer" />
           ) : (
-            <HiOutlineBars3CenterLeft className="text-5xl" />
+            <HiOutlineBars3CenterLeft className="text-5xl cursor-pointer" />
           )}
         </div>
       </div>
@@ -122,65 +122,54 @@ const NavBar = () => {
                 <p className="text-xl font-medium">{user.displayName}</p>
               </div>
             ) : (
-              <Link className="flex justify-end" to="/login">
+              <Link   onClick={() => setOpenMenu(!openMenu)} className="flex justify-end" to="/login">
                 <button className="primary-btn">Login</button>
               </Link>
             )}
             <ul className="text-xl">
-              <li className="py-3 border-b-2">
-                <NavLink
-                  to="/"
-                  className={({ isActive }) =>
-                    isActive ? "text-blue-600" : ""
-                  }
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li className="py-3 border-b-2">
-                <NavLink
-                  to="/all-toys"
-                  className={({ isActive }) =>
-                    isActive ? "text-blue-600" : ""
-                  }
-                >
-                  All Toys
-                </NavLink>
-              </li>
+              <NavLink
+                onClick={() => setOpenMenu(!openMenu)}
+                to="/"
+                className={({ isActive }) => (isActive ? "text-blue-600" : "")}
+              >
+                <li className="py-3 border-b-2 cursor-pointer">Home</li>
+              </NavLink>
+              <NavLink
+                onClick={() => setOpenMenu(!openMenu)}
+                to="/all-toys"
+                className={({ isActive }) => (isActive ? "text-blue-600" : "")}
+              >
+                <li className="py-3 border-b-2">All Toys</li>
+              </NavLink>
               {user && (
-                <li className="py-3 border-b-2">
-                  <NavLink
-                    to="/my-toys"
-                    className={({ isActive }) =>
-                      isActive ? "text-blue-600" : ""
-                    }
-                  >
-                    My Toys
-                  </NavLink>
-                </li>
+                <NavLink
+                  onClick={() => setOpenMenu(!openMenu)}
+                  to="/my-toys"
+                  className={({ isActive }) =>
+                    isActive ? "text-blue-600" : ""
+                  }
+                >
+                  <li className="py-3 border-b-2">My Toys</li>
+                </NavLink>
               )}
               {user && (
-                <li className="py-3 border-b-2">
-                  <NavLink
-                    to="/add-toy"
-                    className={({ isActive }) =>
-                      isActive ? "text-blue-600" : ""
-                    }
-                  >
-                    Add a Toy
-                  </NavLink>
-                </li>
-              )}
-              <li className="py-3 border-b-2">
                 <NavLink
-                  to="/blog"
+                  onClick={() => setOpenMenu(!openMenu)}
+                  to="/add-toy"
                   className={({ isActive }) =>
                     isActive ? "text-blue-600" : ""
                   }
                 >
-                  Blog
+                  <li className="py-3 border-b-2">Add a Toy</li>
                 </NavLink>
-              </li>
+              )}
+              <NavLink
+                onClick={() => setOpenMenu(!openMenu)}
+                to="/blog"
+                className={({ isActive }) => (isActive ? "text-blue-600" : "")}
+              >
+                <li className="py-3 border-b-2">Blog</li>
+              </NavLink>
               {user && (
                 <button onClick={hangleLogOut} className="primary-btn my-3">
                   Logout

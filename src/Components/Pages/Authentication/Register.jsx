@@ -7,39 +7,54 @@ import useTitle from "../../../Hooks/useTitle";
 const Register = () => {
   const { createUser, updateUserInfo, setReload } = useContext(AuthContext);
   const navigate = useNavigate();
-  useTitle("Register")
+  useTitle("Register");
 
   const [error, setError] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [photoURL, setPhotoURL] = useState("");
 
-  
   // Handle Register
   const handleRegister = (event) => {
     event.preventDefault();
+    const photoURL = event.target.image.files[0];
+    console.log(photoURL);
     const form = event.target;
+    //image upload
+    const formData = new FormData();
+    formData.append("image", photoURL);
+    const url = `https://api.imgbb.com/1/upload?key=${
+      import.meta.env.VITE_IMGBB_API_KEY
+    }`;
+    console.log(url);
     //  Validation
     if (password.length < 6) {
       setError("Password should be at least 6 chracter");
       return;
     }
-    createUser(email, password)
-    .then((result) => {
-      console.log(result.user);
-      //update user information
-      updateUserInfo(name, photoURL)
-      .then(() => {
-        form.reset();
-        setReload(true);
-        navigate("/")
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    fetch(url, {
+      method: "POST",
+      body: formData,
     })
-      .catch((error) => console.log(error));
+      .then((res) => res.json())
+      .then((data) => {
+        const userPhoto = data.data.display_url;
+        createUser(email, password)
+          .then((result) => {
+            console.log(result.user);
+            //update user information
+            updateUserInfo(name, userPhoto)
+              .then(() => {
+                form.reset();
+                setReload(true);
+                navigate("/");
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          })
+          .catch((error) => console.log(error));
+      });
   };
   return (
     <div className="flex flex-col md:flex-row container mx-auto md:h-[calc(100vh-64px)] items-center justify-center">
@@ -86,17 +101,10 @@ const Register = () => {
           </div>
 
           <div className="form-control">
-            <label htmlFor="photoURL">PhotoURL</label>
-            <input
-              onChange={(event) => setPhotoURL(event.target.value)}
-              type="url"
-              className="py-2 px-3 border-blue-300 border-2 rounded-md"
-              id="photoURL"
-              placeholder="photoURL"
-              required
-            />
+            <label htmlFor="photo">PhotoURL</label>
+            <input type="file" name="image" id="photo" className="py-1"/>
           </div>
-            <p className="text-error text-sm text-right pr-4">{error}</p>
+          <p className="text-error text-sm text-right pr-4">{error}</p>
           <input
             className="bg-[#2d0beef3] font-bold text-white py-2 rounded-lg cursor-pointer"
             type="submit"
