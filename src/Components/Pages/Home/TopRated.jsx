@@ -19,8 +19,8 @@ const TopRated = () => {
 
   const topRatedToy = toys.filter((toy) => toy.rating > 4.8);
   return (
-    <div>
-      <h1 className="text-gradient text-3xl font-bold">Our Top Rated Toys</h1>
+    <div className="mx-auto container">
+      <h1 className="text-gradient text-3xl font-bold text-center">Our Top Rated Toys</h1>
       <div className="my-8">
         <Swiper
           autoplay={{

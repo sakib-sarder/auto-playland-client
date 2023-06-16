@@ -1,4 +1,6 @@
 import useTitle from "../../../Hooks/useTitle";
+import Features from "../Features/Features";
+import NewsLater from "../NewsLater/NewsLater";
 import Banner from "./Banner";
 import Category from "./Category";
 import PhotoGallery from "./PhotoGallery";
@@ -8,18 +10,20 @@ import TopRated from "./TopRated";
 const Home = () => {
   useTitle("Home");
   return (
-    <div className="container mx-auto px-3 md:px-0">
+    <div className=" px-3 md:px-0">
       <Banner />
-      <h1 className="font-bold text-3xl text-gradient tracking-widest">
+      <h1 className="font-bold text-3xl text-gradient tracking-widest text-center">
         photo gallery
       </h1>
       <PhotoGallery />
-      <h1 className="font-bold text-3xl text-gradient tracking-widest">
+      <Features />
+      <h1 className="font-bold text-3xl text-gradient tracking-widest text-center">
         Shop by category
       </h1>
       <Category />
       <Testimonials />
       <TopRated />
+      <NewsLater />
     </div>
   );
 };

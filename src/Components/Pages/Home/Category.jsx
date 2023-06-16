@@ -36,7 +36,7 @@ const Category = () => {
   };
 
   return (
-    <div className="my-4">
+    <div className="my-4 container mx-auto">
       <Tabs>
         <TabList className="grid grid-cols-3 text-center my-tab-list gap-1 text-white w-5/6 md:w-3/6 mx-auto">
           <Tab className="bg-blue-500 py-2 font-bold tracking-widest cursor-pointer">

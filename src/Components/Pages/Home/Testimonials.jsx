@@ -2,8 +2,8 @@ import { Rating } from "@smastrom/react-rating";
 
 const Testimonials = () => {
   return (
-    <div className="my-12">
-      <h1 className="text-gradient text-3xl font-bold ">
+    <div className="my-12 container mx-auto">
+      <h1 className="text-gradient text-3xl font-bold text-center">
         Customer Reviews and Testimonials
       </h1>
       <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3 mt-8">

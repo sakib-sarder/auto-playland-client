@@ -3,7 +3,7 @@ import { Player } from "@lottiefiles/react-lottie-player";
 
 const Banner = () => {
   return (
-    <div className="flex-col lg:flex-row flex items-center justify-between mt-8 lg:mt-2">
+    <div className="flex-col lg:flex-row flex items-center justify-between mt-8 lg:mt-2 container mx-auto">
       <div
         className=" w-full lg:w-1/2 space-y-3 text-center lg:text-left px-2 lg:px-0"
         data-aos="fade-right"
