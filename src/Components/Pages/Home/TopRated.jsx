@@ -12,7 +12,7 @@ const TopRated = () => {
   const [toys, setToys] = useState([]);
 
   useEffect(() => {
-    fetch(`https://auto-playland-server.vercel.app/all-toys`)
+    fetch(`http://localhost:5000/all-toys`)
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);

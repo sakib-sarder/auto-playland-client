@@ -15,5 +15,5 @@
 }
 
 .primary-btn {
-  @apply px-3 py-2 bg-[#3B82F6] rounded-md font-semibold hover:bg-[#1a6df3f8] text-gray-100;
+  @apply bg-[#F58B0E] px-2 py-2 font-semibold text-white rounded-md;
 }

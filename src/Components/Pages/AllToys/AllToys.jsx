@@ -12,7 +12,7 @@ const AllToys = () => {
   useTitle("All Toy");
 
   useEffect(() => {
-    fetch(`https://auto-playland-server.vercel.app/all-toys`)
+    fetch(`http://localhost:5000/all-toys`)
       .then((res) => res.json())
       .then((data) => setAllToys(data));
   }, []);
@@ -23,7 +23,7 @@ const AllToys = () => {
       return;
     }
     fetch(
-      `https://auto-playland-server.vercel.app/toySearchByName/${searchInput}`
+      `http://localhost:5000/toySearchByName/${searchInput}`
     )
       .then((res) => res.json())
       .then((data) => setAllToys(data));

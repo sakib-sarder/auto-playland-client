@@ -5,10 +5,10 @@ import { SiMinutemailer } from "react-icons/si";
 
 const NewsLater = () => {
   return (
-    <div className="flex items-center lg:flex-row space-y-3 flex-col justify-between container mx-auto">
+    <div className="flex items-center lg:flex-row space-y-3 gap-2 flex-col justify-between container mx-auto my-20">
       <div className="flex items-center gap-3">
         <SiMinutemailer className="text-3xl text-[#F58B0E]" />
-        <p className="md:text-3xl font-bold">Subscribe to Newsletter</p>
+        <p className="md:text-2xl lg:text-3xl font-bold">Subscribe to Newsletter</p>
       </div>
       <div className="flex gap-2">
         <input
@@ -17,7 +17,7 @@ const NewsLater = () => {
           className="border  rounded-md px-2 py-2 md:w-96 text-sm "
           placeholder="Your Email"
         />
-        <button className="bg-[#F58B0E] px-2 py-2 font-semibold text-white rounded-md">
+        <button className="primary-btn">
           Subscribe
         </button>
       </div>

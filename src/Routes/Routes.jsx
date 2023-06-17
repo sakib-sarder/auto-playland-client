@@ -54,9 +54,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://auto-playland-server.vercel.app/all-toys/${params.id}`
-          ),
+          fetch(`http://localhost:5000/all-toys/${params.id}`),
       },
       {
         path: "my-toys",
