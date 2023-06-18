@@ -19,7 +19,7 @@ const Review = () => {
       email: user?.email,
       photo: user?.photoURL,
     };
-    fetch("http://localhost:5000/review", {
+    fetch("https://auto-playland-server.vercel.app/review", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -38,7 +38,7 @@ const Review = () => {
     <div className="flex mt-12 flex-col md:flex-row items-center container mx-auto">
       <div className="w-full md:w-1/2">
         <form className="space-y-2" onSubmit={handleSaveReview}>
-          <p className="text-3xl font-bold">Leave Your Review</p>
+          <p className="text-3xl border-s-4  ps-4 border-[#F58B0E] py-2 font-bold">Leave Your Review</p>
           <div>
             <label htmlFor="name" className="block text-sm">
               Name

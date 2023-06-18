@@ -11,6 +11,8 @@ import ToyDetails from "../Components/Pages/ToyDetails/ToyDetails";
 import MyToys from "../Components/Pages/MyToys/MyToys";
 import PrivateRoute from "../Components/PrivateRoute/PrivateRoute";
 import UpdateToy from "../Components/Pages/MyToys/UpdateToy";
+import TruckToys from "../Components/Pages/TruckToys/TruckToys";
+import SportsCarToy from "../Components/Pages/SportsCarToy/SportsCarToy";
 
 const router = createBrowserRouter([
   {
@@ -54,7 +56,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/all-toys/${params.id}`),
+          fetch(`https://auto-playland-server.vercel.app/all-toys/${params.id}`),
       },
       {
         path: "my-toys",
@@ -68,6 +70,16 @@ const router = createBrowserRouter([
         path: "update-toy/:id",
         element: <UpdateToy></UpdateToy>,
       },
+      {
+        path: "trucks",
+        element: <TruckToys />,
+        loader: ()=> fetch ("https://auto-playland-server.vercel.app/trucks")
+      },
+      {
+        path: "sports-car",
+        element: <SportsCarToy/>,
+        loader: ()=> fetch ("https://auto-playland-server.vercel.app/sports-car")
+      }
     ],
   },
 ]);

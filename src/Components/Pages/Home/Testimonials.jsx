@@ -4,13 +4,13 @@ import TestimonialsCard from "../../TestimonialsCard/TestimonialsCard";
 const Testimonials = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/reviews")
+    fetch("https://auto-playland-server.vercel.app/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);
   return (
-    <div className="container mx-auto">
-      <h1 className="text-5xl font-bold text-center py-8">
+    <div className="container mt-16 mx-auto">
+      <h1 className="text-5xl border-s-4  ps-4 border-[#F58B0E] py-4 font-bold mb-6">
         Customers Testimonials
       </h1>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">

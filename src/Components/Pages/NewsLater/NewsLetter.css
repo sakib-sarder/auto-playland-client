@@ -1,0 +1,5 @@
+.bg-hero{
+    background-image: url("../../../assets/newsletter-bg.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}

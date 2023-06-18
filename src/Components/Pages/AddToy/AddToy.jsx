@@ -33,7 +33,7 @@ const AddToy = () => {
     };
 
     //Mongodb Post
-    fetch("http://localhost:5000/toys", {
+    fetch("https://auto-playland-server.vercel.app/toys", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -12,7 +12,7 @@ const TopRated = () => {
   const [toys, setToys] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/all-toys`)
+    fetch(`https://auto-playland-server.vercel.app/all-toys`)
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);
@@ -20,7 +20,7 @@ const TopRated = () => {
   const topRatedToy = toys.filter((toy) => toy.rating > 4.8);
   return (
     <div className="mx-auto container">
-      <h1 className="text-gradient text-3xl font-bold text-center">Our Top Rated Toys</h1>
+      <h1 className="text-5xl border-s-4  ps-4 border-[#F58B0E] py-4 font-bold">Our Top Rated Toys</h1>
       <div className="my-8">
         <Swiper
           autoplay={{

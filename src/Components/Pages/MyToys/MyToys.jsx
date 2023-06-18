@@ -14,7 +14,7 @@ const MyToys = () => {
   useTitle("My Toy");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/toys/${user?.email}`)
+    fetch(`https://auto-playland-server.vercel.app/toys/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, [user]);
@@ -25,7 +25,7 @@ const MyToys = () => {
       .split("-")
       .map((item) => item.toLocaleLowerCase());
     fetch(
-      `http://localhost:5000/all-toys?value=${value}&type=${type}`
+      `https://auto-playland-server.vercel.app/all-toys?value=${value}&type=${type}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -47,7 +47,7 @@ const MyToys = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/my-toys/${id}`, {
+        fetch(`https://auto-playland-server.vercel.app/my-toys/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -66,7 +66,7 @@ const MyToys = () => {
   return (
     <div className="container mx-auto pt-6">
       <div>
-        <h1 className="text-gradient text-5xl my-3 font-bold">My Toys</h1>
+        <h1 className="text-5xl border-s-4 mb-6 ps-4 border-[#F58B0E] py-4 font-bold">My Toys</h1>
       </div>
       <select
         className="w-40 border mx-auto font-semibold px-3 py-2 mb-6 rounded-md"

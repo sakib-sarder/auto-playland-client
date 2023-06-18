@@ -14,7 +14,7 @@ const Blog = () => {
   useTitle("Blog");
   return (
     <div className="container mx-auto mt-12">
-      <h1 className="text-gradient font-bold text-4xl">
+      <h1 className="text-5xl border-s-4 mb-6 ps-4 border-[#F58B0E] py-4 font-bold">
         Frequntly Ask Questions
       </h1>
       <div className="mt-4">

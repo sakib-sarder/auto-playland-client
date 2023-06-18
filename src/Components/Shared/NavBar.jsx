@@ -79,7 +79,7 @@ const NavBar = () => {
                 Logout
               </button>
               <div
-                className="tooltip tooltip-info tooltip-bottom"
+                className="tooltip tooltip-info tooltip-left"
                 data-tip={user.displayName}
               >
                 <img
